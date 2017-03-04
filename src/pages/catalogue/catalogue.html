@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+            </button>
+        <ion-title>Catalogue</ion-title>
+        <ion-buttons end>
+            <ion-chip>
+                <ion-label>{{_cartItem}}</ion-label>
+                <button ion-button (click)="delete(chip2)"><ion-icon name="cart"></ion-icon></button>
+            </ion-chip>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content no-padding>
+    <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div>
+    <ion-list>
+        <ion-item *ngFor="let item of StockItemList;let i=index">
+            <ion-thumbnail item-left>
+                <img src="{{item.pic}}">
+            </ion-thumbnail>
+            <h2>{{item.stockDesc1}}</h2>
+            <p>Brand: {{item.productGroup}}</p>
+            <p>Price: RM{{item.price}}</p>
+            <button ion-button clear item-right (click)="goDetail(i)">View</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

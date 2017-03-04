@@ -1,0 +1,15 @@
+<ion-item no-padding>
+    <ion-label color="primary">Stock Code</ion-label>
+    <ion-select [(ngModel)]="orderItem.stockItemId">
+        <ion-option *ngFor="let item of StockItemList">{{item.stockItemId}}</ion-option>
+    </ion-select>
+</ion-item>
+<ion-item no-padding>
+    <ion-label color="primary">UOM</ion-label>
+    <ion-select [(ngModel)]="orderItem.uomId">
+        <ion-option *ngFor="let item of UomList">{{item.uomId}}</ion-option>
+    </ion-select>
+</ion-item>
+
+<input-field Label="Unit Price" Type="number" Placeholder="Unit Price" [(inputfield)]="orderItem.unitPrice"></input-field>
+<input-field Label="Quantity" Type="number" Placeholder="Quantity" [(inputfield)]="orderItem.quantity"></input-field>

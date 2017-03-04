@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+        <ion-title>Place Order</ion-title>
+
+        <ion-buttons end>
+            <button color="danger" ion-button icon-only (click)="delete()"><ion-icon name="close-circle"></ion-icon></button>
+        </ion-buttons>
+
+    </ion-navbar>
+</ion-header>
+<ion-content padding-left no-bounce>
+    <ion-item no-padding>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [ngModel]="_orderTrans.orderdate" (ngModelChange)="ChangeFormat($event)"></ion-datetime>
+    </ion-item>
+    <ion-item no-padding>
+        <ion-label color="primary">Customer</ion-label>
+        <ion-select [(ngModel)]="_orderTrans.customerId">
+            <ion-option *ngFor="let item of CustomerList">{{item.customerId}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item no-padding>
+        <ion-label color="primary">Term Code</ion-label>
+        <ion-select [(ngModel)]="_orderTrans.termId">
+            <ion-option *ngFor="let item of TermList">{{item.termId}}</ion-option>
+        </ion-select>
+    </ion-item>
+    
+    <stock-list no-padding [(orderItems)]="_orderTrans.orderItems"></stock-list>
+    <ion-fab bottom right>
+        <button ion-fab color="primary" (click)="save()"><ion-icon name="checkmark"></ion-icon></button>
+    </ion-fab>
+
+</ion-content>

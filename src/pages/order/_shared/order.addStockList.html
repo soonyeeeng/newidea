@@ -1,0 +1,40 @@
+<ion-card no-padding>
+    <ion-card-header no-padding>
+        <ion-grid no-padding>
+            <ion-row>
+                <ion-col>Item(s)</ion-col>
+                <ion-col><button ion-button small color="primary" outline style="float:right" (click)="showAdd()"><ion-icon name="add"></ion-icon>&nbsp;&nbsp;Add</button></ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-header>
+
+    <ion-list no-padding>
+        <!--<ion-item-sliding *ngFor="let item of orderItems; let i = index">-->
+        <ion-item no-padding *ngFor="let item of orderItems; let i = index">
+            <ion-grid no-padding>
+                <ion-row (click)="showHide(i)">
+                    <ion-col>{{i+1}}.</ion-col>
+                    <ion-col>{{item.stockItemId}}</ion-col>
+                    <ion-col>{{item.uomId}}</ion-col>
+                    <ion-col>{{getAmount(item.quantity,item.unitPrice)}}</ion-col>
+                    <button color="danger" ion-button icon-only small clear (click)="delete(i)">
+                        <ion-icon name="remove-circle"></ion-icon>
+                    </button>
+                </ion-row>
+                <ion-row *ngIf="_showDet[i]">
+                    <ion-col>
+                        <add-stock-item [(orderItem)]="orderItems[i]"></add-stock-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-item-options side="right">
+            <ion-buttons style="box-sizing:content-box">
+                <button ion-button color="primary" (click)="duplicate(i)"><ion-icon name="copy"></ion-icon>Duplicate</button>
+                <button ion-button color="primary" (click)="showHide(i)"><ion-icon name="create"></ion-icon>Edit</button>
+                <button ion-button color="danger" (click)="delete(i)"><ion-icon name="trash"></ion-icon>Delete</button>
+            </ion-buttons>
+        </ion-item-options>
+        <!--</ion-item-sliding>-->
+    </ion-list>
+</ion-card>

@@ -1,0 +1,12 @@
+
+<ion-item>
+    <ion-label>{{fieldlabel}}</ion-label>
+    <ion-select [(ngModel)]="optionCode">
+        <ion-option *ngFor="let a of optionList;let i = index" >
+            {{a?.customercode}}
+            {{a?.termcode}}
+            {{a?.stockcode}}
+            {{a?.uomcode}}
+        </ion-option>
+    </ion-select>
+</ion-item>

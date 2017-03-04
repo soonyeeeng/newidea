@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+        <ion-title>
+            Dashboard
+        </ion-title>
+
+        <ion-buttons end>
+            <button color="primary" ion-button icon-only (click)="logout()"><ion-icon name="log-out"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+
+
+
+
+<ion-content class="home" padding no-bounce>
+    <h3>Welcome inside, {{username}}!</h3>
+    Your Email is: {{email}}
+
+    <ion-fab bottom right>
+        <button ion-fab color="primary" (click)="addOrder()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>

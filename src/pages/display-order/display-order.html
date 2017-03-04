@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+        <ion-title>Display Orders</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-card no-padding>
+        <ion-card-header no-padding><h2 padding-left padding-top>Order(s)</h2></ion-card-header>
+        <ion-item-sliding no-padding *ngFor="let item of _orders; let i = index">
+            <ion-item no-padding>
+                <ion-grid no-padding>
+                    <ion-row padding-left (click)="openTransaction(i)">
+                        <ion-col no-padding>{{i+1}}.</ion-col>
+                        <ion-col no-padding>{{item.orderdate}}</ion-col>
+                        <ion-col no-padding>{{item.customerId}}</ion-col>
+                        <ion-col no-padding>{{item.termId}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-card>
+</ion-content>

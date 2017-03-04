@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+            </button>
+        <ion-title>Item Detail</ion-title>
+        <ion-buttons end>
+            <ion-chip>
+                <ion-label>{{_cartItem}}</ion-label>
+                <button ion-button (click)="delete(chip2)"><ion-icon name="cart"></ion-icon></button>
+            </ion-chip>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content no-bounce>
+    
+    <ion-slides  [initialSlide]="_mySlideOptions.initialSlide" >
+        <ion-slide *ngFor="let item of _stockItems; let i = index">
+            <ion-card>
+                <img src="{{item.pic}}">
+                <ion-card-content>
+                    <h2 class="card-title">{{item.stockDesc1}}</h2>
+                    <p>{{item.stockDesc2}}</p>
+                    <p>Brand: {{item.productGroup}}</p>
+                    <p>Stock Code: {{item.stockItemId}}</p>
+                    <p>Stock Available: {{item.stockOnHand}}</p>
+                    <p>Price: RM{{item.price}}</p>
+                </ion-card-content>
+                <button ion-button small color="primary" outline style="float:right" (click)="addOrder(item)"><ion-icon name="add"></ion-icon>&nbsp;&nbsp;Add into order</button>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+</ion-content>
